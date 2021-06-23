@@ -1,0 +1,39 @@
+﻿@model Model.Entity.TheLoai
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel panel-heading">
+                <h1>Thêm Tài Khoản Mới</h1>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        @using (Html.BeginForm("Create", "DanhMuc", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <div class="form-group">
+                                <label>@Html.LabelFor(model => model.Ten)</label>
+                                @Html.TextBoxFor(model => model.Ten, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Ten)
+                            </div>
+                            <p>
+                                <input type="submit" value="Tạo Mới" />
+                            </p>
+                        }
+
+                        <div>
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

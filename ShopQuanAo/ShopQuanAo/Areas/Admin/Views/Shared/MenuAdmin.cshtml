@@ -1,0 +1,58 @@
+﻿<ul class="navbar-nav bg-light sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index","Home")">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Shop Quần Áo</div>
+    </a>
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        
+        <span>@Html.ActionLink("Trang Chủ", "Index", "SanPham")</span>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Interface
+    </div>
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <span>@Html.ActionLink("Danh Mục", "Index", "DanhMuc")</span>
+        
+        
+    </li>
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+        <span>@Html.ActionLink("Nhà Cung Cấp", "Index", "NhaCungCap")</span>
+        
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Addons
+    </div>
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <span>@Html.ActionLink("Tài Khoản", "Index", "TaiKhoan")</span>
+    </li>
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <span>@Html.ActionLink("Sản Phẩm", "Index", "SanPham")</span> 
+    </li>
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <span>@Html.ActionLink("Khách Hàng", "Index", "KhachHang")</span>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+    <!-- Sidebar Message -->    
+</ul>

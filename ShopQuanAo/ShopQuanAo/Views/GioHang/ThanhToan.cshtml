@@ -1,0 +1,67 @@
+﻿@model List<ShopQuanAo.Models.GioHang>
+@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="content">
+    <div class="section group">
+        @if (Model.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Mã SP</td>
+                        <td>Tên SP</td>
+                        <td>Ảnh SP</td>
+                        <td>Số lượng</td>
+                        <td>Đơn giá</td>
+                        <td>Thành tiền</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.sp.MaSP</td>
+                            <td>@item.sp.TenSP</td>
+                            <td><img src="~/ContentsNguoiDung/Image/@item.sp.Anh" width="100" /></td>
+                            <td><input type="text" class="txttrangthai" data-id="@item.sp.MaSP" value="@item.trangThai" /></td>
+                            <td>@item.sp.DonGia.GetValueOrDefault(0).ToString("N0")</td>
+                            <td>@((item.sp.DonGia.GetValueOrDefault(0) * item.trangThai).ToString("N0"))</td>
+                            <td><a href="#" data-id="@item.sp.MaSP" class="btn-delete">Xoá</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        }
+
+    </div>
+    <div class="section group">
+        <div class="col-md-6">
+            @using (Html.BeginForm("ThanhToan", "GioHang", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label>Người nhận</label>
+                    <input name="shipName" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Điện thoại</label>
+                    <input name="mobile" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Địa chỉ</label>
+                    <input name="address" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input name="email" class="form-control" />
+                </div>
+                <button type="submit" class="btn">Gửi đơn hàng</button>
+            }
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "SPTheoDanhMuc";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using ShopQuanAo.Models;
+@model List<SanPham>
+<div class="content">
+    <h2>Sản Phẩm Theo Danh Mục</h2>
+    @ViewBag.Sach
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-4">
+                <img src="~/ContentsNguoiDung/Image/@item.Anh" width="70%" height="70%" alt="Image" />
+                @if (item.TenSP.Length > 30)
+                {
+                    <p><strong title="@item.TenSP">Tiêu Đề: @item.TenSP.Substring(0, 30)</strong><br /><a href="@Url.Action("Category", "SanPham", new { @ms = item.MaSP })">Xem Chi Tiết</a></p>
+                }
+                else
+                {
+                    <p><strong title="@item.TenSP">Tiêu Đề: @item.TenSP</strong><br /><a href="@Url.Action("Category", "SanPham", new { @ms = item.MaSP })">Xem Chi Tiết</a></p>
+                    <div class="clear"></div>
+                }
+            </div>
+        }
+    </div>
+</div>

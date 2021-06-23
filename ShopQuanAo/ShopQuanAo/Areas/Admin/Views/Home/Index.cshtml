@@ -1,0 +1,58 @@
+﻿@model PagedList.IPagedList<Model.Entity.SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Danh Sách Sản Phẩm</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Mã Sản Phẩm</th>
+                        <th>Mã Thể Loại</th>
+                        <th>Mã Nhà Cung Cấp</th>
+                        <th>Tên Sản Phẩm</th>
+                        <th>Ảnh</th>
+                        <th>Đơn Giá</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                                        @*@foreach (var item in Model)
+        {
+            <tr class="row_@item.MaSP">
+                <td>@item.MaSP</td>
+                <td>@item.MaTL</td>
+                <td>@item.MaNCC</td>
+                <td>@item.TenSP</td>
+                <td>@item.Anh</td>
+                <td>@item.DonGia</td>
+                <td>
+                    <a href="/Admin/SanPham/Edit/@item.MaSP">Sửa</a>
+                    |
+                    @Ajax.ActionLink("Xóa", "Delete", new { @ma = item.MaSP }, new AjaxOptions
+                               {
+                                   Confirm = "Bạn có chắc muốn xóa",
+                                   OnComplete = "$('#row_" + item.MaSP + "').remove()",
+                                   HttpMethod = "Delete"
+                               }
+                                    )
+             @Html.ActionLink("Thêm","Create","DanhMuc")
+                </td>
+            </tr>
+
+        }*@
+
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

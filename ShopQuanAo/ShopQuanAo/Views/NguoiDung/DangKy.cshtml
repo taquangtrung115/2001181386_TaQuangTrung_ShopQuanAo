@@ -1,0 +1,128 @@
+﻿@model ShopQuanAo.Models.DangKy
+
+@{
+    ViewBag.Title = "Đăng Ký";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@*<div class="content">
+        <h2>Đăng Ký</h2>
+        @using (Html.BeginForm())
+        { @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <fieldset>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.taiKhoan)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.taiKhoan)
+                    @Html.ValidationMessageFor(model => model.taiKhoan)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.matKhau)
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(model => model.matKhau)
+                    @Html.ValidationMessageFor(model => model.matKhau)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Password)
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(model => model.Password)
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.tenHienThi)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.tenHienThi)
+                    @Html.ValidationMessageFor(model => model.tenHienThi)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.email)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.email)
+                    @Html.ValidationMessageFor(model => model.email)
+                </div>
+
+                <p>
+                    <input type="submit" value="Đăng Ký" class="btn btn-danger" />
+                </p>
+            </fieldset>
+        }
+    </div>*@
+<div class="content">
+    <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Đăng Ký</h1>
+                                </div>
+                                <div class="mb3">
+
+                                    @using (Html.BeginForm())
+                                    {
+
+                                        <fieldset>
+
+                                            <div class="mb-3">
+                                                <form class="user">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Họ Tên</label>
+                                                        <input type="text" name="HoTenKH" id="HoTenKH" placeholder="Tên khách hàng" class="form-control" />
+                                                        @ViewData["Loi1"]
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Tài Khoản</label>
+                                                        <input type="text" name="TenDN" id="TenDN" placeholder="Điện thoại" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Mật Khẩu</label>
+                                                        <input type="password" name="MatKhau" id="MatKhau" placeholder="Mật khẩu" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Nhập Lại Mật Khẩu</label>
+                                                        <input type="password" name="reMatKhau" id="reMatKhau" placeholder="Nhập lại mật khẩu" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Email</label>
+                                                        <input type="text" name="Email" id="Email" placeholder="Email" class="form-control" />
+                                                    </div>                                                 
+                                                    <button class="btn btn-primary btn-user btn-block" type="submit">
+                                                        Đăng ký
+                                                    </button>
+                                                    <hr>
+                                                    <div class="form-group">
+                                                        @ViewBag.Error
+                                                    </div>
+                                                </form>
+
+
+                                            </div>
+                                        </fieldset>
+                                    }
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

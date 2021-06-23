@@ -1,0 +1,79 @@
+﻿@model PagedList.IPagedList<Model.Entity.TaiKhoan>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel panel-heading">
+                <h1>Danh Sách Tài Khoản</h1>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Index", "TaiKhoan", FormMethod.Get))
+                {
+                    <div class="row">
+                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+
+                                <input type="text" value="@ViewBag.TimKiem" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                       aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                }
+                <div class="row">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                @Html.ActionLink("Thêm", "Create", "TaiKhoan")
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Mã Tài Khoản</th>
+                                            <th>Tên Tài Khoản</th>
+                                            <th>Mật Khẩu</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="row_@item.MaTK">
+
+                                                <td>@item.MaTK</td>
+                                                <td>@item.TenTK</td>
+                                                <td>@item.MatKhau</td>
+                                                <td>
+                                                    <a href="/Admin/TaiKhoan/Edit/@item.MaTK">Sửa</a>
+                                                    |
+                                                    @Ajax.ActionLink("Xóa", "Delete", new { @ma = item.MaTK }, new AjaxOptions
+                                           {
+                                               Confirm = "Bạn có chắc muốn xóa",
+                                               OnComplete = "$('#row_" + item.MaTK + "').remove()",
+                                               HttpMethod = "Delete"
+                                           }
+                                                )
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                @Html.PagedListPager(Model, trang => Url.Action("Index", new { trang, @TimKiem = @ViewBag.TimKiem }))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

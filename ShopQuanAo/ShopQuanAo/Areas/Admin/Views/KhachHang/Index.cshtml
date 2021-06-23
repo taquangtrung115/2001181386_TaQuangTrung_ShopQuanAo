@@ -1,0 +1,55 @@
+﻿@model PagedList.IPagedList<Model.Entity.KhachHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Danh Sách Khách Hàng</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Mã Khách Hàng</th>
+                        <th>Tài Khoản</th>
+                        <th>Mật Khẩu</th>
+                        <th>Tên Khách Hàng</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="row_@item.MaKH">
+                            <td>@item.MaKH</td>
+                            <td>@item.TaiKhoan</td>
+                            <td>@item.MatKhau</td>
+                            <td>@item.TenKH</td>
+                            <td>@item.Email</td>
+                            
+                            <td>
+                                <a href="/Admin/KhachHang/Edit/@item.MaKH">Sửa</a>
+                                |
+                                @Ajax.ActionLink("Xóa", "Delete", new { @ma = item.MaKH }, new AjaxOptions
+                                           {
+                                               Confirm = "Bạn có chắc muốn xóa",
+                                               OnComplete = "$('#row_" + item.MaKH + "').remove()",
+                                               HttpMethod = "Delete"
+                                           }
+                                                )
+                                |
+                                @Html.ActionLink("Thêm", "Create", "DanhMuc")
+                            </td>
+                        </tr>
+
+                    }
+
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

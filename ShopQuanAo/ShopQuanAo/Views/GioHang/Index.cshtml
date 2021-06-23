@@ -1,0 +1,55 @@
+﻿@model List<ShopQuanAo.Models.GioHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@section jsFooter{
+
+
+    <script src="~/ContentsNguoiDung/js/Controller/giohang.js"></script>
+}
+<div class="content">
+    <div class="section group">
+        @if (Model.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Mã SP</td>
+                        <td>Tên SP</td>
+                        <td>Ảnh SP</td>
+                        <td>Số lượng</td>
+                        <td>Đơn giá</td>
+                        <td>Thành tiền</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.sp.MaSP</td>
+                            <td>@item.sp.TenSP</td>
+                            <td><img src="~/ContentsNguoiDung/Image/@item.sp.Anh" width="100" /></td>
+                            <td><input type="text" class="txttrangthai" data-id="@item.sp.MaSP" value="@item.trangThai" /></td>
+                            <td>@item.sp.DonGia.GetValueOrDefault(0).ToString("N0")</td>
+                            <td>@((item.sp.DonGia.GetValueOrDefault(0) * item.trangThai).ToString("N0"))</td>
+                            <td><a href="#" data-id="@item.sp.MaSP" class="btn-delete">Xoá</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+            <button id="muatiep" class="btn">Tiếp tục mua hàng</button>
+            <button id="capnhat" class="btn">Cập nhật giỏ hàng</button>
+            <button id="xoa" class="btn">Xoá giỏ hàng</button>
+            <button id="thanhtoan" class="btn">Thanh toán</button>
+        }
+        else
+        {
+            <span class="alert alert-danger">Chưa có sản phẩm nào trong giỏ hàng</span>
+        }
+
+    </div>
+</div>
